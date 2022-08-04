@@ -1,7 +1,5 @@
 package gildedrose
 
-import "fmt"
-
 const (
 	AgedBrie  string = "Aged Brie"
 	Sulfuras  string = "Sulfuras, Hand of Ragnaros"
@@ -26,10 +24,6 @@ type UpdateI interface {
 	Update()
 }
 
-func (i *Item) String() string {
-	return fmt.Sprintf("%s: %d days left, quality is %d", i.Name, i.SellIn, i.Quality)
-}
-
 func UpdateQuality(items []*Item) {
 	for _, item := range items {
 		switch item.Name {
@@ -44,6 +38,5 @@ func UpdateQuality(items []*Item) {
 		default:
 			NewNormalItem(item).Update()
 		}
-		fmt.Println(item.String())
 	}
 }
