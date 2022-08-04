@@ -20,11 +20,7 @@ Alternatively, use the "Text-Based" tests provided in this repository. (Read mor
 
 Whichever testing approach you choose, the idea of the exercise is to do some deliberate practice, and improve your skills at designing test cases and refactoring. The idea is not to re-write the code from scratch, but rather to practice designing tests, taking small steps, running the tests often, and incrementally improving the design. 
 
-### Gilded Rose Requirements in other languages 
-
-======================================
-Gilded Rose Requirements Specification
-======================================
+### Gilded Rose Requirements Specification
 
 Hi and welcome to team Gilded Rose. As you know, we are a small inn with a prime location in a
 prominent city ran by a friendly innkeeper named Allison. We also buy and sell only the finest goods.
