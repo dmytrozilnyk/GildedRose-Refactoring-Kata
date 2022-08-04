@@ -9,19 +9,21 @@ const (
 	Conjured  string = "Conjured Mana Cake"
 )
 
+const (
+	MaxQuality = 50
+	MinQuality = 0
+	MinDays    = 0
+)
+
 // Item describes an item information
 type Item struct {
 	Name            string
 	SellIn, Quality int
 }
 
-// ItemI depending on the product a different function is executed
-type ItemI interface {
-	UpdateQuantityNormalProduct(*Item)
-	UpdateQuantityAgedBrie(*Item)
-	UpdateQuantitySulfuras(*Item)
-	UpdateQuantityBackstage(*Item)
-	UpdateQuantityConjured(*Item)
+// UpdateI - All products implement this interface
+type UpdateI interface {
+	Update()
 }
 
 func (i *Item) String() string {
@@ -32,76 +34,16 @@ func UpdateQuality(items []*Item) {
 	for _, item := range items {
 		switch item.Name {
 		case AgedBrie:
-			item.UpdateQuantityAgedBrie(item)
+			NewAgedBrieItem(item).Update()
 		case Sulfuras:
-			item.UpdateQuantitySulfuras(item)
+			NewSulfurasItem(item).Update()
 		case Backstage:
-			item.UpdateQuantityBackstage(item)
+			NewBackstageItem(item).Update()
 		case Conjured:
-			item.UpdateQuantityConjured(item)
+			NewConjuredItem(item).Update()
 		default:
-			item.UpdateQuantityNormalProduct(item)
+			NewNormalItem(item).Update()
 		}
 		fmt.Println(item.String())
-	}
-}
-
-func (i Item) UpdateQuantityNormalProduct(item *Item) {
-	item.SellIn = item.SellIn - 1
-	if item.Quality > 0 {
-		item.Quality = item.Quality - 1
-	}
-	if item.SellIn < 0 {
-		if item.Quality > 0 {
-			item.Quality = item.Quality - 1
-		}
-	}
-}
-
-func (i Item) UpdateQuantityAgedBrie(item *Item) {
-	if item.Quality < 50 {
-		item.Quality = item.Quality + 1
-	}
-	item.SellIn = item.SellIn - 1
-	if item.SellIn < 0 {
-		if item.Quality < 50 {
-			item.Quality = item.Quality + 1
-		}
-	}
-}
-
-func (i Item) UpdateQuantitySulfuras(item *Item) {
-	//Nothing to do, quality always 80
-}
-
-func (i Item) UpdateQuantityBackstage(item *Item) {
-	if item.Quality < 50 {
-		item.Quality = item.Quality + 1
-		if item.SellIn < 11 {
-			if item.Quality < 50 {
-				item.Quality = item.Quality + 1
-			}
-		}
-		if item.SellIn < 6 {
-			if item.Quality < 50 {
-				item.Quality = item.Quality + 1
-			}
-		}
-	}
-	item.SellIn = item.SellIn - 1
-	if item.SellIn < 0 {
-		item.Quality = item.Quality - item.Quality
-	}
-}
-
-func (i Item) UpdateQuantityConjured(item *Item) {
-	if item.Quality > 0 {
-		item.Quality = item.Quality - 2
-	}
-	item.SellIn = item.SellIn - 1
-	if item.SellIn < 0 {
-		if item.Quality > 0 {
-			item.Quality = item.Quality - 2
-		}
 	}
 }
