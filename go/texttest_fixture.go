@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/dmytrozilnyk/GildedRose-Refactoring-Kata/go/gildedrose"
 	"os"
 	"strconv"
-
-	"github.com/emilybache/gildedrose-refactoring-kata/gildedrose"
 )
 
 func main() {
