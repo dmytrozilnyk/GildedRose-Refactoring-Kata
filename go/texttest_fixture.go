@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/dmytrozilnyk/GildedRose-Refactoring-Kata/go/gildedrose"
+	"github.com/dmytrozilnyk/gildedRose-refactoring-kata/go/gildedrose"
 	"os"
 	"strconv"
 )
