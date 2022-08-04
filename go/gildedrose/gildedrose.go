@@ -1,5 +1,7 @@
 package gildedrose
 
+import "fmt"
+
 const (
 	AgedBrie  string = "Aged Brie"
 	Sulfuras  string = "Sulfuras, Hand of Ragnaros"
@@ -22,16 +24,8 @@ type ItemI interface {
 	UpdateQuantityConjured(*Item)
 }
 
-//func (i *Item) String() string {
-//	return fmt.Sprintf("%s: %d days left, quality is %d", i.name, i.days, i.quality)
-//}
-
-func New(name string, sellIn, quality int) *Item {
-	return &Item{
-		Name:    name,
-		SellIn:  sellIn,
-		Quality: quality,
-	}
+func (i *Item) String() string {
+	return fmt.Sprintf("%s: %d days left, quality is %d", i.Name, i.SellIn, i.Quality)
 }
 
 func UpdateQuality(items []*Item) {
@@ -48,14 +42,15 @@ func UpdateQuality(items []*Item) {
 		default:
 			item.UpdateQuantityNormalProduct(item)
 		}
+		fmt.Println(item.String())
 	}
 }
 
 func (i Item) UpdateQuantityNormalProduct(item *Item) {
+	item.SellIn = item.SellIn - 1
 	if item.Quality > 0 {
 		item.Quality = item.Quality - 1
 	}
-	item.SellIn = item.SellIn - 1
 	if item.SellIn < 0 {
 		if item.Quality > 0 {
 			item.Quality = item.Quality - 1

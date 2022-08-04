@@ -30,16 +30,11 @@ func main() {
 			fmt.Println(err.Error())
 			os.Exit(1)
 		}
-		days++
 	}
 
-	for day := 0; day < days; day++ {
+	for day := 1; day <= days; day++ {
 		fmt.Printf("-------- day %d --------\n", day)
-		fmt.Println("Name, SellIn, Quality")
-		for i := 0; i < len(items); i++ {
-			fmt.Println(items[i])
-		}
-		fmt.Println("")
 		gildedrose.UpdateQuality(items)
+		fmt.Println("")
 	}
 }
