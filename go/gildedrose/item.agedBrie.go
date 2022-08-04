@@ -10,14 +10,12 @@ func NewAgedBrieItem(item *Item) UpdateI {
 
 func (i *AgedBrieItem) Update() {
 	if i.Quality < MaxQuality {
-		i.Quality = i.Quality + 1
+		i.Quality += 1
 	}
-
-	i.SellIn = i.SellIn - 1
-
+	i.SellIn -= 1
 	if i.SellIn < MinDays {
 		if i.Quality < 50 {
-			i.Quality = i.Quality + 1
+			i.Quality += 1
 		}
 	}
 }

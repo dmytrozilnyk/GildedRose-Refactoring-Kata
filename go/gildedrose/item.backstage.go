@@ -10,22 +10,22 @@ func NewBackstageItem(item *Item) UpdateI {
 
 func (i *BackstageItem) Update() {
 	if i.Quality < MaxQuality {
-		i.Quality = i.Quality + 1
+		i.Quality += 1
 		if i.SellIn < 11 {
 			if i.Quality < MaxQuality {
-				i.Quality = i.Quality + 1
+				i.Quality += 1
 			}
 		}
 		if i.SellIn < 6 {
 			if i.Quality < MaxQuality {
-				i.Quality = i.Quality + 1
+				i.Quality += 1
 			}
 		}
 	}
 
-	i.Item.SellIn = i.Item.SellIn - 1
+	i.Item.SellIn -= 1
 
 	if i.SellIn < MinDays {
-		i.Quality = i.Quality - i.Quality
+		i.Quality = MinQuality
 	}
 }
