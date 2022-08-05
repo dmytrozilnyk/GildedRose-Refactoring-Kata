@@ -1,14 +1,14 @@
 package gildedrose
 
-type NormalItem struct {
+type normalItem struct {
 	*Item
 }
 
 func NewNormalItem(item *Item) UpdateI {
-	return &NormalItem{item}
+	return &normalItem{item}
 }
 
-func (i *NormalItem) Update() {
+func (i *normalItem) Update() {
 	if i.Quality > MinQuality {
 		i.Quality -= 1
 	}

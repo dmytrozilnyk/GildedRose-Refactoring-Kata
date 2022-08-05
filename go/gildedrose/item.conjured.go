@@ -1,14 +1,14 @@
 package gildedrose
 
-type ConjuredItem struct {
+type conjuredItem struct {
 	*Item
 }
 
 func NewConjuredItem(item *Item) UpdateI {
-	return &ConjuredItem{item}
+	return &conjuredItem{item}
 }
 
-func (i *ConjuredItem) Update() {
+func (i *conjuredItem) Update() {
 	if i.Quality > MinQuality {
 		i.Quality -= 2
 	}

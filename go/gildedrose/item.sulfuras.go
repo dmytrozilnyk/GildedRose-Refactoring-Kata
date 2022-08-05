@@ -1,13 +1,13 @@
 package gildedrose
 
-type SulfurasItem struct {
+type sulfurasItem struct {
 	*Item
 }
 
 func NewSulfurasItem(item *Item) UpdateI {
-	return &SulfurasItem{item}
+	return &sulfurasItem{item}
 }
 
-func (i *SulfurasItem) Update() {
+func (i *sulfurasItem) Update() {
 	//Nothing to do, quality always 80
 }

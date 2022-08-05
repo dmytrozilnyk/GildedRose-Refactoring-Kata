@@ -1,14 +1,14 @@
 package gildedrose
 
-type AgedBrieItem struct {
+type agedBrieItem struct {
 	*Item
 }
 
 func NewAgedBrieItem(item *Item) UpdateI {
-	return &AgedBrieItem{item}
+	return &agedBrieItem{item}
 }
 
-func (i *AgedBrieItem) Update() {
+func (i *agedBrieItem) Update() {
 	if i.Quality < MaxQuality {
 		i.Quality += 1
 	}

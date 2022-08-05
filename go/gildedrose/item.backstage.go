@@ -1,14 +1,14 @@
 package gildedrose
 
-type BackstageItem struct {
+type backstageItem struct {
 	*Item
 }
 
 func NewBackstageItem(item *Item) UpdateI {
-	return &BackstageItem{item}
+	return &backstageItem{item}
 }
 
-func (i *BackstageItem) Update() {
+func (i *backstageItem) Update() {
 	if i.Quality < MaxQuality {
 		i.Quality += 1
 		if i.SellIn < 11 {
