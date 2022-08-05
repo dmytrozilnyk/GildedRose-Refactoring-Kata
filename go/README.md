@@ -19,3 +19,9 @@ go test ./... -coverprofile=coverage.out
 
 go tool cover -html=coverage.out
 ```
+
+- Run benchmark test :
+
+```shell
+go test -bench=.
+```

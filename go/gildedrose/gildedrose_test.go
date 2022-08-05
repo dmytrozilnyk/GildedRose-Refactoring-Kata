@@ -57,3 +57,16 @@ func TestGildedRose(t *testing.T) {
 		assert.Equal(t, test.expectedSellIn, item.SellIn)
 	}
 }
+
+func BenchmarkTestGildedRose(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		for _, test := range tests {
+			item := &Item{test.name, test.sellIn, test.quality}
+			var items []*Item
+			items = append(items, item)
+			for day := 0; day < test.daysApply; day++ {
+				UpdateQuality(items)
+			}
+		}
+	}
+}
